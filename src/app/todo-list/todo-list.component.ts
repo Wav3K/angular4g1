@@ -16,8 +16,14 @@ export class TodoListComponent {
 //   adnotacja 1:
 //   defaultValue = "test";
   todos : Todo[] = [];
+  ErrorMessage : string = "";
 
   addTodo(todo : string) : void {
+    if(todo.length <=3){
+      this.ErrorMessage = "zadanie musi miec wiecej niz 3 znaki";
+      return;
+    }
+    this.ErrorMessage = "";
     this.todos.push({name: todo, isCompleted: false});
     console.log("Aktualna lista todo: ", this.todos);
   }
@@ -25,4 +31,11 @@ export class TodoListComponent {
   changeTodoStatus(todo: Todo) {
     todo.isCompleted = !todo.isCompleted;
   }
+
+  clearErrorMessage() {
+    this.ErrorMessage = "";
+  }
+
+  protected readonly name = name;
+
 }
