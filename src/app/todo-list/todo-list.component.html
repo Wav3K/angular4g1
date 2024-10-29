@@ -1,14 +1,21 @@
 <!--<input type="text" [value]="defaultValue">-->
 <!--wszystko w [] pozwala dawac wartosci z component.ts (adnotacja 1)-->
+<!--
+  eventy (onclick, onchange) - nawiasy ()
+  properties (checked, style) - nawiasy []
+  warunki (if, for) - gwiazdka *
+-->
 <p class="mt-4">
   Dodaj nowe zadanie
 </p>
 <input type="text" name="todo" class="form-control" #name (keydown)="clearErrorMessage()">
 <button class="btn btn-primary mt-3" (click)="addTodo(name.value)" >Dodaj zadanie</button>
+<button class="btn btn-danger mt-3" (click)="removeCompleted()" >Usuń ukończone</button>
 
 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert" *ngIf="ErrorMessage">
   {{ErrorMessage}}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="clearErrorMessage()"></button>
+
 </div>
 
 
@@ -21,7 +28,11 @@
              [checked]="todo.isCompleted"
              (change)="changeTodoStatus(todo)"
       >
-      <span class="todo-item">{{ i+1 }}. {{ todo.name }}</span>
+      <!--pierwszy sposob: klasa z css i warunek ternary, drugi sposob, sam ternary i zmiana stylu-->
+      <span class="todo-item"
+        [ngClass]="{'todo-complete': todo.isCompleted}"
+        [ngStyle]="{'text-decoration': todo.isCompleted ? 'line-through': 'initial'}"
+      >{{ i+1 }}. {{ todo.name }}</span>
     </li>
   </ul>
   <!--  <h5 *ngIf="todos.length === 0;">Brak zadan do wykonania</h5>-->

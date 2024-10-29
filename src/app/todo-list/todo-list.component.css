@@ -1,0 +1,10 @@
+.todo-complete{
+  text-decoration: line-through;
+  color: green;
+}
+.todos-list {
+  overflow-wrap: break-word;
+}
+.todo-item{
+  margin-left: 10px;
+}
