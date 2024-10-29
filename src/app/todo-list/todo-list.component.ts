@@ -21,4 +21,8 @@ export class TodoListComponent {
     this.todos.push({name: todo, isCompleted: false});
     console.log("Aktualna lista todo: ", this.todos);
   }
+
+  changeTodoStatus(todo: Todo) {
+    todo.isCompleted = !todo.isCompleted;
+  }
 }
