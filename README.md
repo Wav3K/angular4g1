@@ -1,6 +1,3 @@
-Absolutely! Here’s the entire README wrapped in a single code block:
-
-```
 # AngularTODO4g1 🌟
 
 Welcome to the AngularTODO4g1 project! This application is a simple task management tool built with Angular. It was generated using [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
