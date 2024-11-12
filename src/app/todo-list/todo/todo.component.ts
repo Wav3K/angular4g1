@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {NgClass, NgForOf, NgStyle} from "@angular/common";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {Todo} from '../../shared/interfaces/todo.interface';
+import {ModalComponent} from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-todo',
@@ -8,7 +9,9 @@ import {Todo} from '../../shared/interfaces/todo.interface';
   imports: [
     NgForOf,
     NgClass,
-    NgStyle
+    NgStyle,
+    ModalComponent,
+    NgIf
   ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.css'
@@ -16,8 +19,16 @@ import {Todo} from '../../shared/interfaces/todo.interface';
 export class TodoComponent {
   @Input() todo!: Todo;
   @Input() i!: number;
+  @Output() delete = new EventEmitter();
+  openModal = false;
 
   changeTodoStatus(todo: Todo) {
     todo.isCompleted = !todo.isCompleted;
+  }
+  toggleModal(){
+    this.openModal = !this.openModal;
+  }
+  onDelete() {
+    this.delete.emit();
   }
 }

@@ -8,4 +8,14 @@
         [ngClass]="{'todo-complete': todo.isCompleted}"
         [ngStyle]="{'text-decoration': todo.isCompleted ? 'line-through': 'initial'}"
   >{{ i+1 }}. {{ todo.name }}</span>
+  <button class="btn btn-danger btn-sm mx-2" (click)="toggleModal()">Usun</button>
 </li>
+
+<app-modal *ngIf="openModal"
+  [title]="'Usuwanie zadania'"
+           [message]="'Czy chcesz usunac zadnie nr: ' + (i+1)+' ?'"
+           (close)="toggleModal()"
+>
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="toggleModal()">Nie</button>
+  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onDelete()" >Tak</button>
+</app-modal>

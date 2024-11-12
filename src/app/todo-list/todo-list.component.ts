@@ -56,4 +56,7 @@ export class TodoListComponent {
     body.style.transition = "2000ms ease";
     body.style.transform = "rotate(360deg)";
   }
+  deleteTodo(i: number) {
+    this.todos.splice(i, 1);
+  }
 }
