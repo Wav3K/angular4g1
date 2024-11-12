@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 import {Todo} from '../shared/interfaces/todo.interface';
+import {AlertComponent} from '../shared/components/alert/alert.component';
+import {AddTodoFormComponent} from './add-todo-form/add-todo-form.component';
+import {TodoComponent} from './todo/todo.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,7 +12,10 @@ import {Todo} from '../shared/interfaces/todo.interface';
     NgForOf,
     NgIf,
     NgStyle,
-    NgClass
+    NgClass,
+    AlertComponent,
+    AddTodoFormComponent,
+    TodoComponent
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
@@ -35,6 +41,7 @@ export class TodoListComponent {
   }
 
   clearErrorMessage() {
+    // 5
     this.ErrorMessage = "";
   }
 
